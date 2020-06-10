@@ -25,7 +25,7 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
       this.setState({...this.state, isLoading: true});
-
+      console.log(this.state.credentials);
       axiosWithAuth().post('/api/login', this.state.credentials)
       .then( res => {
         window.localStorage.setItem('token', res.data.payload);
@@ -49,13 +49,13 @@ class Login extends React.Component {
                 type="text"
                 name="username"
                 placeholder="Username"
-                onSubmit={this.handleChange}
+                onChange={this.handleChange}
               />
               <input
                 type="password"
                 name="password"
                 placeholder="Password"
-                onSubmit={this.handleChange}
+                onChange={this.handleChange}
               />
               <button>Log in</button>
             </form>
